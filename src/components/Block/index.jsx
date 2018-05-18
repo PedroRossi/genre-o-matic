@@ -2,22 +2,23 @@ import React, { Component } from 'react'
 import '../../styles/block.css';
 
 export default class Block extends Component {
-  _onClick() {
+
+  _onClick = () => {
     if(this.props.onClick)
       this.props.onClick();
-  }
-
-  trackToText() {
-    if(this.props.track === -1)
-      return '-'
-    return '' + this.props.track;
-  }
+  }  
 
   render() {
+    const hasTrack = (this.props.track !== undefined);
+    const track = hasTrack ? this.props.track.substring(0, this.props.track.length - 4) : '-';
+
     return (
-      <div style={Object.assign({}, styles.box, {backgroundColor: (this.props.color ? 'rgb(238, 195, 204)' : '#FFF')})} onClick={this._onClick.bind(this)}>
-        <span style={styles.span}>
-          {this.trackToText()}
+      <div
+        style={Object.assign({}, styles.box, {backgroundColor: (this.props.color ? 'rgb(238, 195, 204)' : '#FFF')})}
+        onClick={this._onClick}
+      >
+        <span style={hasTrack ? styles.spanDefined : styles.spanUndefined}>
+          {track}
         </span>
       </div>
     )
@@ -32,8 +33,12 @@ const styles = {
     display: 'inherit',
     border: '2px solid black'
   },
-  span: {
+  spanUndefined: {
     fontSize: 30,
     marginTop: 30
+  },
+  spanDefined: {
+    fontSize: 20,
+    marginTop: 40
   }
 }

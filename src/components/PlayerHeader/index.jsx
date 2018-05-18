@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import playIcon from '../../images/play.png';
 import pauseIcon from '../../images/pause.png';
 import stopIcon from '../../images/stop.svg';
-import downloadIcon from '../../images/download1.svg';
+// import downloadIcon from '../../images/download1.svg';
 
 class PlayerHeader extends Component {
 
@@ -25,7 +25,7 @@ class PlayerHeader extends Component {
       this.player.play();
       btn = this.pauseBtn;
     }
-    // this.props.toogleIsPlaying();
+    this.props.toogleIsPlaying();
     this.setState({
       btn: btn
     });
@@ -33,7 +33,7 @@ class PlayerHeader extends Component {
 
   stop() {
     this.player.stop();
-    // this.props.stop();
+    this.props.stop();
     this.setState({
       btn: this.playBtn
     });
@@ -53,7 +53,7 @@ class PlayerHeader extends Component {
           <img style={styles.img} src={stopIcon} alt={""} onClick={this.stop.bind(this)}/>
         </div>
         <div style={styles.box}>
-          <img style={styles.img} src={downloadIcon} alt={""} onClick={this.download.bind(this)}/>
+          {/* <img style={styles.img} src={downloadIcon} alt={""} onClick={this.download.bind(this)}/> */}
         </div>
       </div>
     );

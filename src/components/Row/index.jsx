@@ -27,7 +27,7 @@ export default class Row extends Component {
     return array;
   }
 
-  _onClick(idx) {
+  _onClick = (idx) => {
     let arr = this.state.columns.slice();
     arr[idx].track += 1;
     if (arr[idx].track >= this.tracksCount) {
@@ -48,11 +48,11 @@ export default class Row extends Component {
       case 'bass':
         row = 1
       break;
-      case 'keyboard':
-        row = 3
-      break;
       case 'drums':
         row = 2
+      break;
+      case 'keyboard':
+        row = 3
       break;
       default:
     }
@@ -67,7 +67,7 @@ export default class Row extends Component {
     return (
       <div style={style} id="row">
         {this.state.columns.map((val, idx) => 
-          <Block key={idx} track={val.track} color={val.color} onClick={this._onClick.bind(this, idx)} />
+          <Block key={idx} track={this.props.instrument.files[val.track]} color={val.color} onClick={() => this._onClick(idx)} />
         )}
       </div>
     );

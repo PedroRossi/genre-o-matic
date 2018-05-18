@@ -6,6 +6,6 @@ export const data = {
     "drums": drums,
     "keyboard": keyboard
   },
-  "cols": 4,
+  "cols": 10,
   "beatsPerMinute": 155
 };

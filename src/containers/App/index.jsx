@@ -10,7 +10,7 @@ export class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            toRender: <Welcome timeout={100} onDone={this._onDone.bind(this)} />
+            toRender: <Welcome timeout={1} onDone={this._onDone.bind(this)} />
         }
     }
 

@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import { data } from '../../data/';
 
 class ProgressBar extends Component {
 
-    state = {
-        count: 0,
-        isPlaying: false
+    constructor(props) {
+        super(props);
+        this.duration = props.duration;
+        this.state = {
+            count: 0,
+            isPlaying: false
+        };
     }
     
     componentDidMount() {
         // TODO review
-        // this.width = data.cols * 100
         this.width = document.getElementById('row').offsetWidth
-        const totalDuration = data.cols * data.samplesPBlock
-        this.pixel = this.width / (totalDuration / 441)
+        this.pixel = this.width / this.duration;
     }
 
     toogleIsPlaying() {
